@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Login - Motix</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        form {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        input {
+            display: block;
+            margin-bottom: 10px;
+            padding: 8px;
+            width: 200px;
+        }
+        button {
+            padding: 8px 12px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<form th:action="@{/login}" method="post">
+    <h2>Login</h2>
+    <input type="text" name="username" placeholder="Usuário" required>
+    <input type="password" name="password" placeholder="Senha" required>
+    <button type="submit">Entrar</button>
+
+    <p th:if="${param.error}" style="color: red;">Usuário ou senha inválidos</p>
+    <p th:if="${param.logout}" style="color: green;">Logout realizado com sucesso</p>
+</form>
+</body>
+</html>

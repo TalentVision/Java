@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Área Privada - Dashboard</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f4f4;
+        }
+
+        .header {
+            background: #2c3e50;
+            color: white;
+            padding: 15px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header .username {
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .sidebar {
+            width: 220px;
+            background: #34495e;
+            color: white;
+            height: calc(100vh - 60px);
+            position: fixed;
+            top: 60px;
+            left: 0;
+            padding-top: 20px;
+        }
+
+        .sidebar a {
+            display: block;
+            padding: 12px 20px;
+            color: white;
+            text-decoration: none;
+            font-size: 15px;
+            transition: 0.2s;
+        }
+
+        .sidebar a:hover {
+            background: #3d566e;
+            padding-left: 25px;
+        }
+
+        .content {
+            margin-left: 240px;
+            padding: 25px;
+        }
+
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .logout-btn {
+            background: #e74c3c;
+            padding: 8px 15px;
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+
+        .logout-btn:hover {
+            background: #c0392b;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="header">
+    <div class="title">
+        <h2 style="margin: 0;">Painel Privado</h2>
+    </div>
+
+    <div class="username">
+        Olá, <span th:text="${#authentication.name}">usuário</span>!
+        &nbsp;&nbsp;
+        <a class="logout-btn" th:href="@{/logout}">Sair</a>
+    </div>
+</div>
+
+<div class="sidebar">
+
+    <h3 style="padding-left: 20px;">Navegação</h3>
+
+    <a th:href="@{/private/usuarios}">Gerenciar Usuários</a>
+    <a th:href="@{/private/projetos}">Projetos</a>
+    <a th:href="@{/private/config}">Configurações</a>
+    <a th:href="@{/private/logs}">Logs da Aplicação</a>
+    <a th:href="@{/private/relatorios}">Relatórios</a>
+
+    <br>
+    <h3 style="padding-left: 20px;">API</h3>
+
+    <a th:href="@{/api/swagger}">Swagger / Documentação</a>
+    <a th:href="@{/api/status}">Status da API</a>
+
+</div>
+
+<div class="content">
+    <div class="card">
+        <h2>Bem-vindo ao seu Dashboard 🔒</h2>
+        <p>Aqui você poderá gerenciar todas as funcionalidades internas da aplicação.</p>
+
+        <p>
+            Este painel foi feito para ser facilmente expandido.
+            Basta adicionar suas rotas reais mais tarde, e o menu já está pronto para elas.
+        </p>
+
+        <hr>
+
+        <h3>Informações do Usuário</h3>
+        <ul>
+            <li><strong>Usuário conectado:</strong> <span th:text="${#authentication.name}">user</span></li>
+            <li><strong>Permissões:</strong> <span th:text="${#authentication.authorities}">ROLE_USER</span></li>
+        </ul>
+
+        <p>Você pode modificar este layout para se transformar em um dashboard completo futuramente.</p>
+    </div>
+</div>
+
+</body>
+</html>
