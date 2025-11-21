@@ -13,6 +13,7 @@
             height: 100vh;
         }
         form {
+
             background: white;
             padding: 30px;
             border-radius: 10px;
@@ -32,17 +33,44 @@
             border-radius: 4px;
             cursor: pointer;
         }
+        a {
+            color: #4CAF50;
+        }
     </style>
 </head>
 <body>
 <form th:action="@{/login}" method="post">
-    <h2>Login</h2>
-    <input type="text" name="username" placeholder="Usuário" required>
-    <input type="password" name="password" placeholder="Senha" required>
-    <button type="submit">Entrar</button>
+    <h1 th:text="#{app.name}">Talent Vision</h1>
+    <h2 th:text="#{login.title}">Login</h2>
 
-    <p th:if="${param.error}" style="color: red;">Usuário ou senha inválidos</p>
-    <p th:if="${param.logout}" style="color: green;">Logout realizado com sucesso</p>
+    <input type="text"
+           name="username"
+           th:placeholder="#{login.username}"
+           required>
+
+    <input type="password"
+           name="password"
+           th:placeholder="#{login.password}"
+           required>
+
+    <button type="submit" th:text="#{login.button}">Entrar</button>
+
+    <p th:if="${param.error}"
+       style="color: red;"
+       th:text="#{login.error}">
+        Usuário ou senha inválidos
+    </p>
+
+    <p th:if="${param.logout}"
+       style="color: green;"
+       th:text="#{login.logout.success}">
+        Logout realizado com sucesso
+    </p>
+
+    <a th:href="@{/auth/register}"
+       th:text="#{login.createAccount}">
+        Criar conta
+    </a>
 </form>
 </body>
 </html>
