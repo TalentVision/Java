@@ -8,7 +8,6 @@ import lombok.Setter;
 public class EvaluationResultDTO {
 
     private String idUser;
-    private String applicationDescription;
     private Double score;
     private ResultStatus status;
 }

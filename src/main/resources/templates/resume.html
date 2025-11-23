@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Enviar Currículo</title>
+</head>
+<body>
+<h1>Enviar Currículo</h1>
+
+<div th:if="${message}">
+    <p th:text="${message}" style="color: green"></p>
+</div>
+
+<form th:action="@{/resume/send}" th:object="${resume}" method="post">
+
+    <label>ID do Usuário:</label><br>
+    <input type="text" th:field="*{idUser}" required><br><br>
+
+    <label>Nome:</label><br>
+    <input type="text" th:field="*{name}" required><br><br>
+
+    <label>E-mail:</label><br>
+    <input type="email" th:field="*{email}" required><br><br>
+
+    <label>Currículo (Texto ou Base64):</label><br>
+    <textarea th:field="*{resume}" rows="4" required></textarea><br><br>
+
+    <button type="submit">Enviar Currículo</button>
+</form>
+
+</body>
+</html>

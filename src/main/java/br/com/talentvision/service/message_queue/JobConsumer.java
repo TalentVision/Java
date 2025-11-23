@@ -18,14 +18,20 @@ public class JobConsumer {
     @RabbitListener(queues = QueueConfig.FILA_CURRICULO_AVALIADO)
     public void decidir(EvaluationResultDTO avaliacao) {
 
-        System.out.println("Empresa analisando candidato da vaga: " + avaliacao.getApplicationDescription());
+        System.out.println("Empresa analisando candidato: " + avaliacao.getIdUser());
 
         //TODO Ajustar metodo de avaliação coerente com o negocio
-        boolean accepted = avaliacao.getScore() > 50;
+        //Teste
+        boolean accepted = false;
+        try {
+            Thread.sleep(5000);
+            accepted = true;
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
 
         ApplicationDecisionDTO decision = new ApplicationDecisionDTO();
         decision.setIdUser(avaliacao.getIdUser());
-        decision.setApplicationDescription(avaliacao.getApplicationDescription());
         decision.setDecision(accepted);
         decision.setMessage(accepted ? "Parabéns! Seu currículo foi aceito." : "Obrigado, mas seguimos com outros candidatos.");
 

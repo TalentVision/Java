@@ -10,6 +10,5 @@ public class ResumeDTO {
     private String name;
     private String email;
     private String resume;
-    private String applicationDescription;
 
 }

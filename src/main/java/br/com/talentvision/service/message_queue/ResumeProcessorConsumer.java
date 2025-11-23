@@ -28,7 +28,6 @@ public class ResumeProcessorConsumer {
 
         EvaluationResultDTO resultado = new EvaluationResultDTO();
         resultado.setIdUser(curriculo.getIdUser());
-        resultado.setApplicationDescription(curriculo.getApplicationDescription());
         resultado.setScore(score);
         resultado.setStatus(WAITING_RESPONSE);
 
