@@ -22,12 +22,12 @@ public class SecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .userDetailsService(userService)
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/auth/register", "/login", "/css/**").permitAll()
+                        .requestMatchers("/auth/register", "/login","/hello", "/css/**").permitAll()
                         .anyRequest().authenticated()
                 )
                 .formLogin(login -> login
                         .loginPage("/login")
-                        .defaultSuccessUrl("/private/home", true)
+                        .defaultSuccessUrl("/resume/form", true)
                         .permitAll()
                 )
                 .logout(logout -> logout.logoutUrl("/logout"))

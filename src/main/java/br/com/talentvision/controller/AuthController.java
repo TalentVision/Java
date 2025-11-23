@@ -17,7 +17,7 @@ public class AuthController {
     @GetMapping("/register")
     public String registerForm(Model model) {
         model.addAttribute("user", new User());
-        return "register"; // thymeleaf: register.html
+        return "register";
     }
 
     @PostMapping("/register")
